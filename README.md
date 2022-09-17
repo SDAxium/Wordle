@@ -29,8 +29,7 @@ GIF created with Screen Record(android)
 
 
 ## Notes
-
-Describe any challenges encountered while building the app.
+- Random word generator showed an index out of bounds out of nowhere. After changing the random generation slightly, the first word would always be the same upon opening the app. Changed the function to shuffle the array then pick a random word from it 
 
 ## License
 
