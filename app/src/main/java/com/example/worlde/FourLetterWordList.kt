@@ -14,10 +14,12 @@ object FourLetterWordList {
     }
 
     // Returns a random four letter word from the list in all caps
-    // An index out of bounds appeared for some reason so I changed this to just take a random
+    // 7:13 pm An index out of bounds appeared for some reason so I changed this to just take a random
     // word from the list
+    // 9:58 pm The word deep was always showing up as the first word. Changed method to shuffle array
+    // from jump
     fun getRandomFourLetterWord(): String {
-        val allWords = getAllFourLetterWords()
+        val allWords = getAllFourLetterWords().shuffled()
         val rand = Random.nextInt(allWords.size)
         //val randomNumber = (0..allWords.size).shuffled().last()
         return allWords[rand].uppercase()

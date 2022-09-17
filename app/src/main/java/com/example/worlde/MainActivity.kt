@@ -12,13 +12,12 @@ import android.util.Log
 import android.view.View
 
 class MainActivity : AppCompatActivity() {
-
-    var wordToGuess = FourLetterWordList.getRandomFourLetterWord()
-
+    var wordToGuess = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        wordToGuess = FourLetterWordList.getRandomFourLetterWord()
         val answerView = findViewById<TextView>(R.id.answerView)
         answerView.text = wordToGuess
 
