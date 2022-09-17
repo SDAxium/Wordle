@@ -23,12 +23,15 @@ class MainActivity : AppCompatActivity() {
 
         val guess1View = findViewById<TextView>(R.id.guess1TextView)
         val guess1Text = findViewById<EditText>(R.id.guess1)
+        val guess1Check = findViewById<TextView>(R.id.guessCheck1)
 
         val guess2View = findViewById<TextView>(R.id.guess2TextView)
         val guess2Text = findViewById<EditText>(R.id.guess2)
+        val guess2Check = findViewById<TextView>(R.id.guessCheck2)
 
         val guess3View = findViewById<TextView>(R.id.guess3TextView)
         val guess3Text = findViewById<EditText>(R.id.guess3)
+        val guess3Check = findViewById<TextView>(R.id.guessCheck3)
 
         val submitButton = findViewById<Button>(R.id.submitButton)
         val resetButton = findViewById<Button>(R.id.resetButton)
@@ -37,14 +40,26 @@ class MainActivity : AppCompatActivity() {
         var arrayIndex = 0
         val viewArray = arrayOf(guess1View,guess2View,guess3View)
         val textArray = arrayOf(guess1Text,guess2Text,guess3Text)
+        val checkArray = arrayOf(guess1Check,guess2Check,guess3Check)
 
         submitButton.setOnClickListener{
             val currTArray = textArray[arrayIndex]
+            val currGArray = checkArray[arrayIndex]
+
             val guess = currTArray.text.toString().uppercase()
 
-            if (guess.length.equals(4))
+            if (guess.length == 4)
             {
-                if (guess.equals(wordToGuess))
+                currGArray.text = checkGuess(guess)
+                currTArray.setText(guess,TextView.BufferType.NORMAL)
+
+                // Disable the text box
+                currTArray.inputType = InputType.TYPE_NULL
+                currTArray.isEnabled = false
+
+                // Toast.makeText(it.context,wordToGuess,Toast.LENGTH_SHORT).show()
+
+                if (guess == wordToGuess)
                 {
                     answerView.visibility = View.VISIBLE
                     resetButton.visibility = View.VISIBLE
@@ -54,14 +69,6 @@ class MainActivity : AppCompatActivity() {
                 {
                     arrayIndex++
                 }
-
-                currTArray.setText(checkGuess(guess))
-
-                // Disable the text box
-                currTArray.setInputType(InputType.TYPE_NULL)
-                currTArray.setEnabled(false)
-
-                // Toast.makeText(it.context,wordToGuess,Toast.LENGTH_SHORT).show()
 
                 if (arrayIndex > 2)
                 {
@@ -73,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                 {
                     viewArray[arrayIndex].visibility = View.VISIBLE
                     textArray[arrayIndex].visibility = View.VISIBLE
+                    checkArray[arrayIndex].visibility = View.VISIBLE
                 }
 
                 //Toast.makeText(it.context,textArray[arrayIndex].text,Toast.LENGTH_SHORT).show()
@@ -84,13 +92,14 @@ class MainActivity : AppCompatActivity() {
             for(view in textArray)
             {
                 view.inputType = InputType.TYPE_CLASS_TEXT
-                view.setEnabled(true)
+                view.isEnabled = true
                 view.setText("",TextView.BufferType.EDITABLE)
             }
             for (index in 1..2)
             {
                 viewArray[index].visibility = View.INVISIBLE
                 textArray[index].visibility = View.INVISIBLE
+                checkArray[index].visibility = View.INVISIBLE
             }
 
             submitButton.visibility = View.VISIBLE
