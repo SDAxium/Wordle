@@ -10,14 +10,14 @@ Time spent: **7** hours spent in total
 
 The following **required** functionality is completed:
 
-* [ ] User has 3 chances to guess a random 4 letter word
-* [ ] After 3 guesses, user should no longer be able to submit another guess
-* [ ] After each guess, user sees the "correctness" of the guess
-* [ ] After all guesses are taken, user can see the target word displayed 
+* [x] User has 3 chances to guess a random 4 letter word
+* [x] After 3 guesses, user should no longer be able to submit another guess
+* [x] After each guess, user sees the "correctness" of the guess
+* [x] After all guesses are taken, user can see the target word displayed 
 
 The following **optional** features are implemented:
 
-* [ ] User can tap a 'Reset' button to get a new word and clear previous guesses
+* [x] User can tap a 'Reset' button to get a new word and clear previous guesses
 
 ## Video Walkthrough
 
